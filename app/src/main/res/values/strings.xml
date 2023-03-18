@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">CIS2208_Assignment</string>
+    <string name="app_name">Trivia</string>
+    <string name="pick_difficulty">Pick a Difficulty</string>
+    <string name="pick_category">Pick a Category</string>
+    <string name="play">Play</string>
+    <string name="your_profile">Your Profile</string>
 </resources>
