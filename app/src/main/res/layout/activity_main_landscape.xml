@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_landscape"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_teal"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/trivia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bubblegum_sans"
+        android:shadowColor="@color/black"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="20"
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textSize="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/bulb"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <ImageView
+        android:id="@+id/bulb"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/unlit_bulb"
+        app:layout_constraintBottom_toTopOf="@+id/play_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/trivia"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/play_button"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="25dp"
+        android:backgroundTint="@color/blue"
+        android:fontFamily="@font/bubblegum_sans"
+        android:gravity="center"
+        android:text="@string/play"
+        android:textSize="30dp"
+        app:cornerRadius="10dp"
+        app:icon="@drawable/play"
+        app:iconGravity="textEnd"
+        app:iconSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="@color/lilac"
+        app:strokeWidth="10dp"
+        android:onClick="goToCategorySelection"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
