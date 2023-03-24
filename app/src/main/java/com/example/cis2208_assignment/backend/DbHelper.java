@@ -13,6 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
@@ -46,6 +47,10 @@ public class DbHelper extends SQLiteOpenHelper {
                 "FOREIGN KEY(\"categoryID\") REFERENCES \"categories\"(\"categoryID\"));"
         );
 
+        db.execSQL("CREATE TABLE IF NOT EXISTS \"difficulties\" (" +
+                "\"difficultyLevel\" INTEGER PRIMARY KEY, " +
+                "\"difficulty\" TEXT NOT NULL);");
+
         String[] insertions = Insertions.insertions;
         for(int i = 0; i<insertions.length; i++){
             db.execSQL(insertions[i]);
@@ -73,14 +78,14 @@ public class DbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<String> difficulties = new ArrayList<String>();
         String[] projection = {"difficulty"};
-        Cursor cursor = db.query("questions", projection, null, null, null, null, null);
+        String sortOrder = "difficultyLevel ASC";
+        Cursor cursor = db.query("difficulties", projection, null, null, null, null, sortOrder);
         System.out.println(cursor.getCount());
         while(cursor.moveToNext()){
             String diff = cursor.getString(cursor.getColumnIndexOrThrow("difficulty"));
             difficulties.add(diff);
         }
-        List<String> unique = difficulties.stream().distinct().collect(Collectors.toList());
-        return unique;
+        return difficulties;
     }
 }
 
