@@ -1,6 +1,7 @@
 package com.example.cis2208_assignment.difficulty_selection;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cis2208_assignment.CategorySelection;
 import com.example.cis2208_assignment.R;
 
 import java.util.List;
@@ -50,7 +52,9 @@ public class DifficultyButtonAdapter extends RecyclerView.Adapter<DifficultyButt
             b.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // SET INTENT WITH DIFFICULTY AND GO TO CATEGORY SELECTION
+                    Intent intent = new Intent(v.getContext(), CategorySelection.class);
+                    intent.putExtra("DIFFICULTY", b.getText().toString());
+                    v.getContext().startActivity(intent);
                 }
             });
         }

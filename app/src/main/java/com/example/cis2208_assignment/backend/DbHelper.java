@@ -4,10 +4,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -24,8 +27,33 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     public void onCreate(SQLiteDatabase db){
-        db.execSQL(createTables());
+        db.execSQL("CREATE TABLE IF NOT EXISTS \"categories\" " +
+                "(\"categoryID\" INTEGER PRIMARY KEY, " +
+                "\"categoryName\" TEXT NOT NULL, " +
+                "\"icon\" TEXT NOT NULL);"
+        );
+
+        db.execSQL("CREATE TABLE IF NOT EXISTS \"questions\" (" +
+                "\"questionID\" INTEGER PRIMARY KEY, " +
+                "\"question\" TEXT NOT NULL, " +
+                "\"difficulty\" TEXT NOT NULL, " +
+                "\"answer_1\" TEXT NOT NULL, " +
+                "\"answer_2\" TEXT NOT NULL, " +
+                "\"answer_3\" TEXT NOT NULL, " +
+                "\"correctAnswer\" TEXT NOT NULL, " +
+                "\"answeredCorrectly\" INTEGER NOT NULL DEFAULT 0, " +
+                "\"categoryID\" INTEGER, " +
+                "FOREIGN KEY(\"categoryID\") REFERENCES \"categories\"(\"categoryID\"));"
+        );
+
+        String[] insertions = Insertions.insertions;
+        for(int i = 0; i<insertions.length; i++){
+            db.execSQL(insertions[i]);
+        }
+
     }
+
+
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
         db.execSQL(dropTables("questions"));
@@ -34,10 +62,6 @@ public class DbHelper extends SQLiteOpenHelper {
 
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion){
         onUpgrade(db, oldVersion, newVersion);
-    }
-
-    public String createTables(){
-        return "";
     }
 
     public String dropTables(String tableName){
@@ -50,6 +74,11 @@ public class DbHelper extends SQLiteOpenHelper {
         ArrayList<String> difficulties = new ArrayList<String>();
         String[] projection = {"difficulty"};
         Cursor cursor = db.query("questions", projection, null, null, null, null, null);
+        System.out.println(cursor.getCount());
+        while(cursor.moveToNext()){
+            String diff = cursor.getString(cursor.getColumnIndexOrThrow("difficulty"));
+            difficulties.add(diff);
+        }
         List<String> unique = difficulties.stream().distinct().collect(Collectors.toList());
         return unique;
     }

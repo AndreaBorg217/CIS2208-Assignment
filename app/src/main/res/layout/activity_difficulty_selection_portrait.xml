@@ -30,7 +30,11 @@
         android:name="com.example.cis2208_assignment.difficulty_selection.difficulty_button_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="198dp"
-        tools:layout_editor_absoluteY="377dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/trivia"
+        tools:ignore="MissingConstraints"
+        tools:layout="@layout/fragment_difficulty_button_list" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

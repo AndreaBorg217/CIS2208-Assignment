@@ -7,6 +7,8 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.cis2208_assignment.backend.DbHelper;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
