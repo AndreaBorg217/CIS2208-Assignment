@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.view.LayoutInflater;
@@ -49,9 +51,11 @@ public class CategoryButtonAdapter extends RecyclerView.Adapter<CategoryButtonAd
         Context context = b.getContext();
         int id = context.getResources().getIdentifier(c.categoryIcon, "drawable", context.getPackageName());
         Drawable icon = context.getResources().getDrawable(id);
-        b.setCompoundDrawablesWithIntrinsicBounds(icon, null, null, null);
-
+        Bitmap bitmap = ((BitmapDrawable) icon).getBitmap();
+        Drawable newsize = new BitmapDrawable(context.getResources(), Bitmap.createScaledBitmap(bitmap, 50, 50, true));
+        b.setCompoundDrawablesWithIntrinsicBounds(newsize, null, null, null);
     }
+
 
     @Override
     public int getItemCount() {

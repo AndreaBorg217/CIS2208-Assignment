@@ -57,6 +57,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:strokeColor="@color/lilac"
         app:strokeWidth="10dp"
-        android:onClick="goToDifficultySelection"/>
+        android:onClick="goToDifficultySelection"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
