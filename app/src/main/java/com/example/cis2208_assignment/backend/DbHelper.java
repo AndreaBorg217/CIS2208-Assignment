@@ -48,8 +48,8 @@ public class DbHelper extends SQLiteOpenHelper {
         );
 
         db.execSQL("CREATE TABLE IF NOT EXISTS \"difficulties\" (" +
-                "\"difficultyLevel\" INTEGER PRIMARY KEY, " +
-                "\"difficulty\" TEXT NOT NULL);");
+                "\"difficultyLevel\" INTEGER, " +
+                "\"difficulty\" TEXT PRIMARY KEY);");
 
         String[] insertions = Insertions.insertions;
         for(int i = 0; i<insertions.length; i++){
