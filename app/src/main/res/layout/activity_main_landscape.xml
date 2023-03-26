@@ -50,6 +50,7 @@
         android:gravity="center"
         android:text="@string/play"
         android:textSize="30dp"
+        android:textAllCaps="false"
         app:cornerRadius="10dp"
         app:icon="@drawable/play"
         app:iconGravity="textEnd"

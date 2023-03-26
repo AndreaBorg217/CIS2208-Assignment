@@ -33,20 +33,23 @@
     <TextView
         android:id="@+id/question"
         android:layout_width="350dp"
-        android:layout_height="150dp"
-        android:layout_marginBottom="320dp"
+        android:layout_height="180dp"
+        android:layout_marginBottom="250dp"
         android:background="@color/white"
         android:fontFamily="@font/bubblegum_sans"
+        android:gravity="center"
         android:padding="16dp"
         android:text="Which country hosted the 1994 World Cup?"
+        android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="35dp"
+        app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo"
-        app:strokeColor="@color/black"
-        app:strokeWidth="100dp" />
+        app:strokeColor="@color/purple_500"
+        app:strokeWidth="10dp" />
 
     <Button
         android:id="@+id/button4"
@@ -54,16 +57,20 @@
         android:layout_height="90dp"
         android:backgroundTint="@color/blue"
         android:fontFamily="@font/bubblegum_sans"
+        android:gravity="center"
         android:padding="16dp"
         android:text="England"
-        android:textSize="28dp"
+        android:textAllCaps="false"
+        android:textSize="35dp"
+        app:cornerRadius="10dp"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/button1"
         app:layout_constraintTop_toBottomOf="@+id/question"
         app:strokeColor="@color/lilac"
-        app:strokeWidth="100dp" />
+        app:strokeWidth="10dp"
+        />
 
     <Button
         android:id="@id/button1"
@@ -71,16 +78,19 @@
         android:layout_height="90dp"
         android:backgroundTint="@color/blue"
         android:fontFamily="@font/bubblegum_sans"
+        android:gravity="center"
         android:padding="16dp"
         android:text="Germany"
-        android:textSize="28dp"
+        android:textAllCaps="false"
+        android:textSize="35dp"
+        app:cornerRadius="10dp"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toStartOf="@+id/button4"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/question"
         app:strokeColor="@color/lilac"
-        app:strokeWidth="100dp" />
+        app:strokeWidth="10dp" />
 
     <Button
         android:id="@+id/button2"
@@ -88,16 +98,19 @@
         android:layout_height="90dp"
         android:backgroundTint="@color/blue"
         android:fontFamily="@font/bubblegum_sans"
+        android:gravity="center"
         android:padding="16dp"
         android:text="Italy"
-        android:textSize="28dp"
+        android:textAllCaps="false"
+        android:textSize="35dp"
+        app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button3"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button1"
         app:strokeColor="@color/lilac"
-        app:strokeWidth="100dp" />
+        app:strokeWidth="10dp" />
 
     <Button
         android:id="@+id/button3"
@@ -105,15 +118,17 @@
         android:layout_height="90dp"
         android:backgroundTint="@color/blue"
         android:fontFamily="@font/bubblegum_sans"
-        android:padding="16dp"
+        android:gravity="center"
         android:text="France"
-        android:textSize="28dp"
+        android:textAllCaps="false"
+        android:textSize="35dp"
+        app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/button2"
         app:layout_constraintTop_toBottomOf="@+id/button4"
         app:strokeColor="@color/lilac"
-        app:strokeWidth="100dp" />
+        app:strokeWidth="10dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
