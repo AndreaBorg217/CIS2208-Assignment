@@ -54,7 +54,7 @@ public class CategoryButtonAdapter extends RecyclerView.Adapter<CategoryButtonAd
         Drawable icon = context.getResources().getDrawable(id);
         Bitmap bitmap = ((BitmapDrawable) icon).getBitmap();
         Drawable newsize = new BitmapDrawable(context.getResources(), Bitmap.createScaledBitmap(bitmap, 50, 50, true));
-        b.setCompoundDrawablesWithIntrinsicBounds(newsize, null, null, null);
+        b.setCompoundDrawablesWithIntrinsicBounds(null, null, newsize, null);
     }
 
 
