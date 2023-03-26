@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cis2208_assignment.Category;
 import com.example.cis2208_assignment.CategorySelection;
+import com.example.cis2208_assignment.GameActivity;
 import com.example.cis2208_assignment.MainActivity;
 import com.example.cis2208_assignment.R;
 import com.example.cis2208_assignment.difficulty_selection.DifficultyButtonAdapter;
@@ -73,7 +74,7 @@ public class CategoryButtonAdapter extends RecyclerView.Adapter<CategoryButtonAd
                 public void onClick(View v) {
                     Intent fetch = ((Activity) v.getContext()).getIntent();
                     String difficulty = fetch.getStringExtra("DIFFICULTY");
-                    Intent intent = new Intent(v.getContext(), MainActivity.class);
+                    Intent intent = new Intent(v.getContext(), GameActivity.class);
                     String cat = b.getText().toString();
                     intent.putExtra("CATEGORY", cat);
                     intent.putExtra("DIFFICULTY", difficulty);
