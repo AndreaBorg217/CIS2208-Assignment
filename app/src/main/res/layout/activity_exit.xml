@@ -59,14 +59,18 @@
         android:layout_width="280dp"
         android:layout_height="95dp"
         android:backgroundTint="@color/blue"
+        android:drawablePadding="16dp"
         android:fontFamily="@font/bubblegum_sans"
         android:gravity="center"
+        android:onClick="goToDifficultySelectionScreen"
         android:text="@string/go_again"
         android:textAlignment="center"
+        android:textAllCaps="false"
         android:textSize="40dp"
         app:cornerRadius="10dp"
         app:icon="@drawable/replay"
         app:iconGravity="textEnd"
+        app:iconPadding="25dp"
         app:iconSize="40dp"
         app:layout_constraintBottom_toTopOf="@+id/quit_button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,22 +78,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rightBulb"
         app:strokeColor="@color/lilac"
-        app:strokeWidth="10dp"
-        android:onClick="goToDifficultySelectionScreen"
-        android:textAllCaps="false"/>
+        app:strokeWidth="10dp" />
 
     <Button
         android:id="@+id/quit_button"
         android:layout_width="280dp"
         android:layout_height="95dp"
         android:backgroundTint="@color/blue"
+        android:drawablePadding="16dp"
         android:fontFamily="@font/bubblegum_sans"
         android:gravity="center"
+        android:onClick="goToHome"
         android:text="@string/quit"
+        android:textAllCaps="false"
         android:textSize="40dp"
         app:cornerRadius="10dp"
         app:icon="@drawable/quit"
         app:iconGravity="textEnd"
+        app:iconPadding="25dp"
         app:iconSize="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -97,9 +103,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/replay_button"
         app:strokeColor="@color/lilac"
-        app:strokeWidth="10dp"
-        android:onClick="goToHome"
-        android:textAllCaps="false"
-        />
+        app:strokeWidth="10dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
