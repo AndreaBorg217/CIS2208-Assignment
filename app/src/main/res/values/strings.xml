@@ -4,6 +4,8 @@
     <string name="pick_category">Pick a Category</string>
     <string name="play">Play</string>
     <string name="your_profile">Your Profile</string>
+    <string name="go_again">Go again</string>
+    <string name="quit">Quit</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

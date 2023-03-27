@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_teal"
+    tools:context=".ExitActivity">
+
+    <TextView
+        android:id="@+id/scoreText"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/bubblegum_sans"
+        android:text="You guess 10/10!"
+        android:textColor="@color/white"
+        android:textSize="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/centerBulb"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/unlit_bulb"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoreText" />
+
+    <ImageView
+        android:id="@+id/rightBulb"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:rotation="15"
+        android:src="@drawable/unlit_bulb"
+        app:layout_constraintEnd_toEndOf="@+id/centerBulb"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/leftBulb"
+        app:layout_constraintTop_toBottomOf="@+id/centerBulb" />
+
+    <ImageView
+        android:id="@+id/leftBulb"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginEnd="120dp"
+        android:rotation="-15"
+        android:src="@drawable/unlit_bulb"
+        app:layout_constraintEnd_toStartOf="@+id/rightBulb"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/centerBulb"
+        app:layout_constraintTop_toBottomOf="@+id/centerBulb" />
+
+    <Button
+        android:id="@+id/replay_button"
+        android:layout_width="280dp"
+        android:layout_height="95dp"
+        android:backgroundTint="@color/blue"
+        android:fontFamily="@font/bubblegum_sans"
+        android:gravity="center"
+        android:text="@string/go_again"
+        android:textAlignment="center"
+        android:textSize="40dp"
+        app:cornerRadius="10dp"
+        app:icon="@drawable/replay"
+        app:iconGravity="textEnd"
+        app:iconSize="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/quit_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rightBulb"
+        app:strokeColor="@color/lilac"
+        app:strokeWidth="10dp"
+        android:onClick="goToDifficultySelectionScreen"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/quit_button"
+        android:layout_width="280dp"
+        android:layout_height="95dp"
+        android:backgroundTint="@color/blue"
+        android:fontFamily="@font/bubblegum_sans"
+        android:gravity="center"
+        android:text="@string/quit"
+        android:textSize="40dp"
+        app:cornerRadius="10dp"
+        app:icon="@drawable/quit"
+        app:iconGravity="textEnd"
+        app:iconSize="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/replay_button"
+        app:strokeColor="@color/lilac"
+        app:strokeWidth="10dp"
+        android:onClick="goToHome"
+        android:textAllCaps="false"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

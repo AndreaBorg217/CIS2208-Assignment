@@ -109,7 +109,9 @@ public class GameActivity extends AppCompatActivity {
                         QuestionRound(questions);
                     } else {
                         //CHECK HIGHSCORE
-                        // GO TO EXIT SCREEN
+                        Intent intent = new Intent(GameActivity.this, ExitActivity.class);
+                        intent.putExtra("SCORE", score);
+                        startActivity(intent);
                     }
                 }
             }, 2000); //
