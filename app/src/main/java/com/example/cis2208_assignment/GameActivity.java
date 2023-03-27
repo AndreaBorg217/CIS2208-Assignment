@@ -28,6 +28,7 @@ public class GameActivity extends AppCompatActivity {
     protected Button option_3;
     protected Button option_4;
     protected Resources res;
+    DbHelper helper;
 
 
     @Override
@@ -43,7 +44,7 @@ public class GameActivity extends AppCompatActivity {
         String difficulty = fetch.getStringExtra("DIFFICULTY");
         String category = fetch.getStringExtra("CATEGORY");
 
-        DbHelper helper = new DbHelper(this);
+        helper = new DbHelper(this);
         int categoryID = helper.getCategoryID(category);
         questions = helper.getTenQuestions(difficulty, categoryID);
 
@@ -93,10 +94,10 @@ public class GameActivity extends AppCompatActivity {
             // if the pressed button contains the correct answer the score is incremented
             Button b = (Button) view;
             if(b.getText() == questions.get(i).correctAnswer){
+                helper.setCorrectAnswered(questions.get(i).questionId);
                 score++;
             }
             // the colours of the buttons are updated to mark which answers are correct and incorrect
-
             switchButtonColours();
 
             // after 2secs the next question/exit screen is shown to the user

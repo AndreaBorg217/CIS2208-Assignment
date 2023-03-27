@@ -1,5 +1,6 @@
 package com.example.cis2208_assignment.backend;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -145,6 +146,15 @@ public class DbHelper extends SQLiteOpenHelper {
             toReturn.add(questions.get(i));
         }
         return toReturn;
+    }
+
+    public void setCorrectAnswered(int questionId){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues dataToUpdate = new ContentValues();
+        dataToUpdate.put("answeredCorrectly", 1);
+        String selection = "questionID = ?";
+        String[] selectionArgs = {Integer.toString(questionId)};
+        db.update("questions", dataToUpdate, selection, selectionArgs);
     }
 }
 
