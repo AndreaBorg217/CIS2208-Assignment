@@ -40,6 +40,5 @@ public class MainActivity extends AppCompatActivity {
     public void goToDifficultySelection(View v){
         Intent intent = new Intent(this, DifficultySelection.class);
         startActivity(intent);
-        finish();
     }
 }

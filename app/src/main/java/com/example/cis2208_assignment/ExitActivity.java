@@ -15,6 +15,10 @@ public class ExitActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exit);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         ImageView left = (ImageView)findViewById(R.id.leftBulb);
         ImageView centre = (ImageView)findViewById(R.id.centerBulb);
         ImageView  right = (ImageView)findViewById(R.id.rightBulb);

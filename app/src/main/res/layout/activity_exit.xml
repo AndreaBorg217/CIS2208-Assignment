@@ -7,25 +7,34 @@
     android:background="@color/light_teal"
     tools:context=".ExitActivity">
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/toolbar"
+        android:name="com.example.cis2208_assignment.Toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/fragment_toolbar" />
+
     <TextView
         android:id="@+id/scoreText"
-        android:layout_width="400dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="22dp"
         android:fontFamily="@font/bubblegum_sans"
         android:text="You guess 10/10!"
         android:textColor="@color/white"
         android:textSize="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <ImageView
         android:id="@+id/centerBulb"
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:src="@drawable/unlit_bulb"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,6 +67,7 @@
         android:id="@+id/replay_button"
         android:layout_width="280dp"
         android:layout_height="95dp"
+        android:layout_marginBottom="-1dp"
         android:backgroundTint="@color/blue"
         android:drawablePadding="16dp"
         android:fontFamily="@font/bubblegum_sans"
@@ -84,6 +94,7 @@
         android:id="@+id/quit_button"
         android:layout_width="280dp"
         android:layout_height="95dp"
+        android:layout_marginTop="-1dp"
         android:backgroundTint="@color/blue"
         android:drawablePadding="16dp"
         android:fontFamily="@font/bubblegum_sans"

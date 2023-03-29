@@ -12,5 +12,9 @@ public class DifficultySelection extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_difficulty_selection_portrait);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
     }
 }
