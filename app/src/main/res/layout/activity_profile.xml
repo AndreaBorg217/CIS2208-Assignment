@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_teal"
-    tools:context=".Profile">
+    tools:context=".ProfileActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/toolbar"
@@ -18,7 +18,7 @@
         tools:layout="@layout/fragment_toolbar" />
 
     <TextView
-        android:id="@+id/trivia"
+        android:id="@+id/heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="540dp"
@@ -38,25 +38,27 @@
         app:layout_constraintVertical_bias="0.85" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/profile_pic"
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:layout_marginTop="16dp"
         android:clickable="true"
+        android:onClick="changeProfilePicture"
         android:src="@drawable/profile"
         app:layout_constraintBottom_toTopOf="@+id/difficulty_scores_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/trivia"
+        app:layout_constraintTop_toBottomOf="@+id/heading"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/change_pic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:clickable="true"
+        android:onClick="changeProfilePicture"
         android:fontFamily="@font/bubblegum_sans"
         android:text="Change your Profile"
         android:textColor="@color/white"
@@ -64,9 +66,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/profile_pic" />
 
     <TextView
+        android:id="@+id/high_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -79,7 +82,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/profile_pic" />
 
     <Button
         android:id="@+id/category_scores_button"
@@ -99,7 +102,7 @@
         app:layout_constraintBottom_toTopOf="@+id/difficulty_scores_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/change_pic"
         app:strokeColor="@color/lilac"
         app:strokeWidth="10dp" />
 

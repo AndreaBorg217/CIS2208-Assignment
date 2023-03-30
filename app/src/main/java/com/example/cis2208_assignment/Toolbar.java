@@ -2,16 +2,20 @@ package com.example.cis2208_assignment;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.example.cis2208_assignment.backend.DbHelper;
 
 public class Toolbar extends Fragment {
 
@@ -27,6 +31,18 @@ public class Toolbar extends Fragment {
         back =  (ImageView) view.findViewById(R.id.back_button);
         profile = (ImageView) view.findViewById(R.id.profile_button);
 
+        DbHelper helper = new DbHelper(view.getContext());
+
+        String base = helper.getProfilePicture();
+        if(base == null){
+            profile.setImageResource(R.drawable.profile);
+        }
+        else {
+            byte[] decodedString = Base64.decode(base, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+            profile.setImageBitmap(bitmap);
+        }
+
         // Set click listeners for the buttons
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,11 +55,10 @@ public class Toolbar extends Fragment {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent((Activity) v.getContext(), MainActivity.class);
+                Intent intent = new Intent((Activity) v.getContext(), ProfileActivity.class);
                 v.getContext().startActivity(intent);
             }
         });
-
         return view;
     }
 }

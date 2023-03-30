@@ -5,6 +5,7 @@ public class Insertions {
                     "INSERT OR IGNORE INTO \"difficulties\" VALUES (1,'Easy');" ,
                     "INSERT OR IGNORE INTO \"difficulties\" VALUES (2,'Medium');" ,
                     "INSERT OR IGNORE INTO \"difficulties\" VALUES (3,'Hard');" ,
+                    "INSERT OR IGNORE INTO \"user\" VALUES (1,0, NULL);" ,
                     "INSERT OR IGNORE INTO \"categories\" VALUES (1,'Arts','arts_icon');" ,
                     "INSERT OR IGNORE INTO \"categories\" VALUES (2,'Film & TV','film_and_tv_icon');" ,
                     "INSERT OR IGNORE INTO \"categories\" VALUES (3,'Food & Drink','food_and_drink_icon');" ,

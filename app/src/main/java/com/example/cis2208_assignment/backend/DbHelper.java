@@ -55,10 +55,16 @@ public class DbHelper extends SQLiteOpenHelper {
                 "\"difficultyLevel\" INTEGER, " +
                 "\"difficulty\" TEXT PRIMARY KEY);");
 
+        db.execSQL("CREATE TABLE IF NOT EXISTS \"user\" (" +
+                "\"userID\" INTEGER,"+
+                "\"high_score\" INTEGER, " +
+                "\"profile_pic\" TEXT);");
+
         String[] insertions = Insertions.insertions;
         for(int i = 0; i<insertions.length; i++){
             db.execSQL(insertions[i]);
         }
+
 
     }
 
@@ -155,6 +161,48 @@ public class DbHelper extends SQLiteOpenHelper {
         String selection = "questionID = ?";
         String[] selectionArgs = {Integer.toString(questionId)};
         db.update("questions", dataToUpdate, selection, selectionArgs);
+    }
+
+    public void updateProfilePicture(String base){
+        System.out.println(base.length());
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues dataToUpdate = new ContentValues();
+        dataToUpdate.put("profile_pic", base);
+        String selection = "userID = ?";
+        String[] selectionArgs = {"1"};
+        db.update("user", dataToUpdate, selection, selectionArgs);
+    }
+
+    public String getProfilePicture(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] projection = {"profile_pic"};
+        Cursor cursor = db.query("user", projection, null, null, null, null, null);
+        String pic = null;
+        if(cursor.moveToFirst()){
+            pic =  cursor.getString(cursor.getColumnIndexOrThrow("profile_pic"));
+        }
+        return pic;
+    }
+
+
+    public void updateHighScore(int score){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues dataToUpdate = new ContentValues();
+        dataToUpdate.put("high_score", score);
+        String selection = "userID = ?";
+        String[] selectionArgs = {Integer.toString(1)};
+        db.update("user", dataToUpdate, selection, selectionArgs);
+    }
+
+    public int getHighScore(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] projection = {"high_score"};
+        Cursor cursor = db.query("user", projection, null, null, null, null, null);
+        int score = 0;
+        if(cursor.moveToFirst()){
+            score =  cursor.getInt(cursor.getColumnIndexOrThrow("high_score"));
+        }
+        return score;
     }
 }
 

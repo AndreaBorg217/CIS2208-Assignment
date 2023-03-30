@@ -61,6 +61,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     protected void QuestionRound(@NonNull ArrayList<Question> questions){
+        System.out.println("SCORE" + score);
         // a function which populates UI elements with current question
         Question q = questions.get(i);
 
@@ -108,7 +109,9 @@ public class GameActivity extends AppCompatActivity {
                     if (i < 10) {
                         QuestionRound(questions);
                     } else {
-                        //CHECK HIGHSCORE
+                        if(score > helper.getHighScore()){
+                            helper.updateHighScore(score);
+                        }
                         Intent intent = new Intent(GameActivity.this, ExitActivity.class);
                         intent.putExtra("SCORE", score);
                         startActivity(intent);
@@ -136,4 +139,6 @@ public class GameActivity extends AppCompatActivity {
             b.setBackgroundTintList(ColorStateList.valueOf(red));
         }
     }
+
+
 }
