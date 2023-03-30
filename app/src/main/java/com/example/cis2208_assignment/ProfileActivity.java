@@ -1,6 +1,7 @@
 package com.example.cis2208_assignment;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -8,6 +9,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -35,6 +37,7 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         ImageView profile_pic = (ImageView) findViewById(R.id.profile_pic);
         TextView highScore = (TextView) findViewById(R.id.high_score);
+        CardView card = (CardView) findViewById(R.id.picture_container);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
@@ -47,11 +50,13 @@ public class ProfileActivity extends AppCompatActivity {
         String base = helper.getProfilePicture();
         if(base == null){
             profile_pic.setImageResource(R.drawable.profile);
+            card.setCardBackgroundColor(Color.TRANSPARENT);
         }
         else {
             byte[] decodedString = Base64.decode(base, Base64.DEFAULT);
             Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
             profile_pic.setImageBitmap(bitmap);
+            card.setCardBackgroundColor(Color.WHITE);
         }
     }
 
