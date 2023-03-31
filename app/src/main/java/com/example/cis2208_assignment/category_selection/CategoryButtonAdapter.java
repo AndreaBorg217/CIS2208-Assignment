@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -47,14 +48,15 @@ public class CategoryButtonAdapter extends RecyclerView.Adapter<CategoryButtonAd
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Category c = categories.get(position);
-        Button b = holder.b;
-        b.setText(c.categoryName);
-        Context context = b.getContext();
+        TextView name = holder.name;
+        name.setText(c.categoryName);
+        ImageView icon = holder.icon;
+
+        Context context = icon.getContext();
         int id = context.getResources().getIdentifier(c.categoryIcon, "drawable", context.getPackageName());
-        Drawable icon = context.getResources().getDrawable(id);
-        Bitmap bitmap = ((BitmapDrawable) icon).getBitmap();
-        Drawable newsize = new BitmapDrawable(context.getResources(), Bitmap.createScaledBitmap(bitmap, 50, 50, true));
-        b.setCompoundDrawablesWithIntrinsicBounds(null, null, newsize, null);
+        Drawable pic = context.getResources().getDrawable(id);
+        icon.setImageDrawable(pic);
+
     }
 
 
@@ -64,18 +66,21 @@ public class CategoryButtonAdapter extends RecyclerView.Adapter<CategoryButtonAd
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public Button b;
+        public TextView name;
+        public ImageView icon;
 
         public ViewHolder(final View itemView) {
             super(itemView);
-            b = (Button) itemView.findViewById(R.id.category_button);
-            b.setOnClickListener(new View.OnClickListener() {
+            name = (TextView) itemView.findViewById(R.id.category_name);
+            icon = (ImageView) itemView.findViewById(R.id.category_icon);
+            CardView card = (CardView) itemView.findViewById(R.id.category_button);
+            card.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent fetch = ((Activity) v.getContext()).getIntent();
                     String difficulty = fetch.getStringExtra("DIFFICULTY");
                     Intent intent = new Intent(v.getContext(), GameActivity.class);
-                    String cat = b.getText().toString();
+                    String cat = name.getText().toString();
                     intent.putExtra("CATEGORY", cat);
                     intent.putExtra("DIFFICULTY", difficulty);
                     v.getContext().startActivity(intent);
