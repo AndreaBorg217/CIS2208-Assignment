@@ -36,7 +36,7 @@
             android:id="@+id/category_icon"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="25dp"
             android:src="@drawable/arts_icon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
