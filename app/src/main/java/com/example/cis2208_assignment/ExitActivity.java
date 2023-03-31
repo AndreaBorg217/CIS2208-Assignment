@@ -27,6 +27,7 @@ public class ExitActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int score = intent.getIntExtra("SCORE", 0);
 
+        // Set images according to how many correct answers were obtained
         scoreText.setText("You guessed " + score + "/10!");
         if(score > 0){
                 left.setImageResource(R.drawable.lit_bulb);

@@ -70,6 +70,7 @@ public class DifficultyScores extends AppCompatActivity {
                 spannableString.setSpan(new ForegroundColorSpan(ContextCompat.getColor(DifficultyScores.this, R.color.yellow)), 0, spannableString.length(), 0);
                 item.setTitle(spannableString);
 
+                // Switch fragment
                 Fragment selectedFragment = null;
                 switch (item.getItemId()) {
                     case R.id.navigation_easy:

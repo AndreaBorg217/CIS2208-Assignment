@@ -23,7 +23,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
         android:fontFamily="@font/bubblegum_sans"
-        android:text="You guess 10/10!"
         android:textColor="@color/white"
         android:textSize="50dp"
         app:layout_constraintEnd_toEndOf="parent"

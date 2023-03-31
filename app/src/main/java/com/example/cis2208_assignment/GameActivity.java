@@ -71,6 +71,8 @@ public class GameActivity extends AppCompatActivity {
 
         Resources res = getResources();
         int blue = res.getColor(R.color.blue);
+
+        enableButtons();
         option_1.setBackgroundTintList(ColorStateList.valueOf(blue));
         option_1.setText(q.answers[0]);
         option_1.setOnClickListener(checkAnswer);
@@ -91,7 +93,7 @@ public class GameActivity extends AppCompatActivity {
     View.OnClickListener checkAnswer = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-
+            disableButtons();
             // if the pressed button contains the correct answer the score is incremented
             Button b = (Button) view;
             if(b.getText() == questions.get(i).correctAnswer){
@@ -129,6 +131,20 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
+    protected void disableButtons(){
+        option_1.setEnabled(false);
+        option_2.setEnabled(false);
+        option_3.setEnabled(false);
+        option_4.setEnabled(false);
+    }
+
+    protected void enableButtons(){
+        option_1.setEnabled(true);
+        option_2.setEnabled(true);
+        option_3.setEnabled(true);
+        option_4.setEnabled(true);
+    }
+
     protected void switchButtonColour(Button b){
         int red = res.getColor(R.color.red);
         int green = res.getColor(R.color.green);
@@ -138,6 +154,7 @@ public class GameActivity extends AppCompatActivity {
         else{
             b.setBackgroundTintList(ColorStateList.valueOf(red));
         }
+        b.setTextColor(res.getColor(R.color.white));
     }
 
 

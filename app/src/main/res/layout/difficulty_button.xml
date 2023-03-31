@@ -10,7 +10,6 @@
     android:gravity="center"
     android:textSize="50dp"
     app:cornerRadius="10dp"
-    android:text="default"
     android:textAllCaps="false"
     app:strokeColor="@color/lilac"
     app:strokeWidth="10dp"

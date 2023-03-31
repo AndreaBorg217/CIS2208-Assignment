@@ -14,6 +14,4 @@
     app:strokeWidth="10dp"
     android:textAllCaps="false"
     android:layout_marginBottom="30dp"
-    android:autoSizeTextType="uniform"
-    android:autoSizeMaxTextSize="50dp"
-    android:autoSizeMinTextSize="35dp" />
+    android:textSize="35dp" />
