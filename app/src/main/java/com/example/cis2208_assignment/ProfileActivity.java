@@ -94,4 +94,9 @@ public class ProfileActivity extends AppCompatActivity {
             }
         }
     }
+
+    public void goToCategoryScores(View v){
+        Intent intent = new Intent(this, CategoryScores.class);
+        startActivity(intent);
+    }
 }

@@ -204,5 +204,37 @@ public class DbHelper extends SQLiteOpenHelper {
         }
         return score;
     }
+
+
+    public List<Category> getAllCategoryScores(){
+        ArrayList<Category> categories = new ArrayList<Category>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] projection = {"categoryID", "categoryName", "icon"};
+        Cursor cursor = db.query("categories", projection, null, null, null, null, null);
+
+        while(cursor.moveToNext()){
+            int id = cursor.getInt(cursor.getColumnIndexOrThrow("categoryID"));
+            String category = cursor.getString(cursor.getColumnIndexOrThrow("categoryName"));
+            String icon = cursor.getString(cursor.getColumnIndexOrThrow("icon"));
+            String score = this.getCategoryScore(id);
+            Category toAdd = new Category(id, category, icon, score);
+            categories.add(toAdd);
+        }
+        List<Category> unique = categories.stream().distinct().collect(Collectors.toList());
+        return unique;
+    }
+
+    public String getCategoryScore(int id){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] projection = {"categoryID"};
+        String selection = "answeredCorrectly = 1 AND categoryID = ?";
+        String[] selectionArgs = {Integer.toString(id)};
+        Cursor correct = db.query("questions", projection, selection, selectionArgs, null, null, null);
+
+        selection = "categoryID = ?";
+        Cursor total = db.query("questions", projection, selection, selectionArgs, null, null, null);
+
+        return correct.getCount() + "/" + total.getCount();
+    }
 }
 

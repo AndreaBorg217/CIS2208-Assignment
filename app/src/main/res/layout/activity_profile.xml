@@ -112,7 +112,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/change_pic"
         app:strokeColor="@color/lilac"
-        app:strokeWidth="10dp" />
+        app:strokeWidth="10dp"
+        android:onClick="goToCategoryScores"/>
 
     <Button
         android:id="@+id/difficulty_scores_button"
