@@ -133,7 +133,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:strokeColor="@color/lilac"
-        app:strokeWidth="10dp" />
+        app:strokeWidth="10dp"
+        android:onClick="goToDifficulyScores"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

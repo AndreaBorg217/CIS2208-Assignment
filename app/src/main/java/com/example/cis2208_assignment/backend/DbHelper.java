@@ -226,12 +226,25 @@ public class DbHelper extends SQLiteOpenHelper {
 
     public String getCategoryScore(int id){
         SQLiteDatabase db = this.getReadableDatabase();
-        String[] projection = {"categoryID"};
+        String[] projection = {"questionID"};
         String selection = "answeredCorrectly = 1 AND categoryID = ?";
         String[] selectionArgs = {Integer.toString(id)};
         Cursor correct = db.query("questions", projection, selection, selectionArgs, null, null, null);
 
         selection = "categoryID = ?";
+        Cursor total = db.query("questions", projection, selection, selectionArgs, null, null, null);
+
+        return correct.getCount() + "/" + total.getCount();
+    }
+
+    public String getDifficultyScore(String difficulty){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] projection = {"questionID"};
+        String selection = "answeredCorrectly = 1 AND difficulty = ?";
+        String[] selectionArgs = {difficulty};
+        Cursor correct = db.query("questions", projection, selection, selectionArgs, null, null, null);
+
+        selection = "difficulty = ?";
         Cursor total = db.query("questions", projection, selection, selectionArgs, null, null, null);
 
         return correct.getCount() + "/" + total.getCount();

@@ -8,7 +8,23 @@
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/blue</item>
         <item name="colorSecondaryVariant">@color/lilac</item>
-        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorOnSecondary">@color/yellow</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="BottomNavTextStyleActive">
+        <item name="android:fontFamily">@font/bubblegum_sans</item>
+        <item name="android:textSize">30dp</item>
+        <item name="android:textColorPrimary">@color/yellow</item>
+        <item name="android:textColor">@color/yellow</item>
+
+    </style>
+
+
+    <style name="BottomNavTextStyleInactive">
+        <item name="android:fontFamily">@font/bubblegum_sans</item>
+        <item name="android:textSize">30dp</item>
+    </style>
+
+
 </resources>
