@@ -20,7 +20,8 @@
             android:label="@string/title_activity_difficulty_scores" />
         <activity
             android:name=".CategoryScores"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="sensor"/>
         <activity
             android:name=".ProfileActivity"
             android:exported="false" />
