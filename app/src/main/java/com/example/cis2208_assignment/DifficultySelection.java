@@ -14,7 +14,7 @@ public class DifficultySelection extends AppCompatActivity {
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
             setContentView(R.layout.activity_difficulty_selection_landscape);
         } else{
-            setContentView(R.layout.activity_difficulty_selection_landscape);
+            setContentView(R.layout.activity_difficulty_selection_portrait);
         }
 
         if (getSupportActionBar() != null) {
@@ -27,9 +27,9 @@ public class DifficultySelection extends AppCompatActivity {
 
         // Reload the appropriate layout when device orientation changes
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            setContentView(R.layout.activity_category_selection_landscape);
+            setContentView(R.layout.activity_difficulty_selection_landscape);
         } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
-            setContentView(R.layout.activity_category_selection_portrait);
+            setContentView(R.layout.activity_difficulty_selection_portrait);
         }
     }
 }

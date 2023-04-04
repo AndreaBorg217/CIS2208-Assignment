@@ -30,7 +30,8 @@
             android:exported="false" />
         <activity
             android:name=".GameActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="sensor"/>
         <activity
             android:name=".CategorySelection"
             android:exported="false"
