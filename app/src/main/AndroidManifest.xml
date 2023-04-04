@@ -37,7 +37,8 @@
             android:screenOrientation="sensor"/>
         <activity
             android:name=".DifficultySelection"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="sensor"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

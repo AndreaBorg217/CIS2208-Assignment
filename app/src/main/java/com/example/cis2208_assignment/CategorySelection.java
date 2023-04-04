@@ -1,9 +1,9 @@
 package com.example.cis2208_assignment;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.res.Configuration;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class CategorySelection extends AppCompatActivity {
 
@@ -25,9 +25,9 @@ public class CategorySelection extends AppCompatActivity {
 
         // Reload the appropriate layout when device orientation changes
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            setContentView(R.layout.activity_main_landscape);
+            setContentView(R.layout.activity_category_selection_landscape);
         } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
-            setContentView(R.layout.activity_main_portrait);
+            setContentView(R.layout.activity_category_selection_portrait);
         }
     }
 }

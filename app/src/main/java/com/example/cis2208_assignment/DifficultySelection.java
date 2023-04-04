@@ -1,20 +1,35 @@
 package com.example.cis2208_assignment;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.res.Configuration;
 import android.os.Bundle;
 
-import com.example.cis2208_assignment.backend.DbHelper;
+import androidx.appcompat.app.AppCompatActivity;
 
 
 public class DifficultySelection extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_difficulty_selection_portrait);
+
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+            setContentView(R.layout.activity_difficulty_selection_landscape);
+        } else{
+            setContentView(R.layout.activity_difficulty_selection_landscape);
+        }
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
+        }
+    }
+
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        // Reload the appropriate layout when device orientation changes
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            setContentView(R.layout.activity_category_selection_landscape);
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            setContentView(R.layout.activity_category_selection_portrait);
         }
     }
 }
