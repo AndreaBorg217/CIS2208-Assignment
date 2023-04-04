@@ -1,23 +1,21 @@
 package com.example.cis2208_assignment;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.provider.Settings;
 import android.util.Base64;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.example.cis2208_assignment.backend.DbHelper;
 
@@ -34,7 +32,12 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+            setContentView(R.layout.activity_profile_landscape);
+        } else{
+            setContentView(R.layout.activity_profile_portrait);
+        }
+
         ImageView profile_pic = (ImageView) findViewById(R.id.profile_pic);
         TextView highScore = (TextView) findViewById(R.id.high_score);
         CardView card = (CardView) findViewById(R.id.picture_container);
@@ -103,5 +106,16 @@ public class ProfileActivity extends AppCompatActivity {
     public void goToDifficulyScores(View v){
         Intent intent = new Intent(this, DifficultyScores.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            setContentView(R.layout.activity_profile_landscape);
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            setContentView(R.layout.activity_profile_portrait);
+        }
     }
 }
