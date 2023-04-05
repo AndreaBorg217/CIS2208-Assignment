@@ -5,11 +5,6 @@ import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.view.MenuItem;
 
-import com.example.cis2208_assignment.ui.easy.EasyFragment;
-import com.example.cis2208_assignment.ui.hard.HardFragment;
-import com.example.cis2208_assignment.ui.medium.MediumFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -20,6 +15,10 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.cis2208_assignment.databinding.ActivityDifficultyScoresBinding;
+import com.example.cis2208_assignment.ui.easy.EasyFragment;
+import com.example.cis2208_assignment.ui.hard.HardFragment;
+import com.example.cis2208_assignment.ui.medium.MediumFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class DifficultyScores extends AppCompatActivity {
 
@@ -42,6 +41,7 @@ public class DifficultyScores extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
+        // Hide the app bar
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
@@ -56,7 +56,9 @@ public class DifficultyScores extends AppCompatActivity {
         // Set a listener to detect when a menu item is selected
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
+            // Handler for when a menu option is selected
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
                 // Loop through all menu items to reset the color to white
                 int size = bottomNavigationView.getMenu().size();
                 for (int i = 0; i < size; i++) {
@@ -65,12 +67,13 @@ public class DifficultyScores extends AppCompatActivity {
                     spannableString.setSpan(new ForegroundColorSpan(ContextCompat.getColor(DifficultyScores.this, R.color.white)), 0, spannableString.length(), 0);
                     menuItem.setTitle(spannableString);
                 }
+
                 // Set the color of the selected menu item to yellow
                 SpannableString spannableString = new SpannableString(item.getTitle());
                 spannableString.setSpan(new ForegroundColorSpan(ContextCompat.getColor(DifficultyScores.this, R.color.yellow)), 0, spannableString.length(), 0);
                 item.setTitle(spannableString);
 
-                // Switch fragment
+                // Switch fragment to the one chosen
                 Fragment selectedFragment = null;
                 switch (item.getItemId()) {
                     case R.id.navigation_easy:

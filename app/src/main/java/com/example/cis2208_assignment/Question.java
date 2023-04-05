@@ -17,6 +17,7 @@ public class Question {
         this.difficulty = difficulty;
         this.correctAnswer = correct;
         this.answers = new String[]{correct, ans_1, ans_2, ans_3};
+        // The list of option is shuffled so that the correct answer doesn't always appear in the same place
         List<String> questionList = Arrays.asList(answers);
 		Collections.shuffle(questionList);
 		questionList.toArray(answers);

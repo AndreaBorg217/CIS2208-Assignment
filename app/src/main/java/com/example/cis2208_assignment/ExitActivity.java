@@ -14,12 +14,15 @@ public class ExitActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Picking layout which matches the screen's orientation
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
             setContentView(R.layout.activity_exit_landscape);
         } else{
             setContentView(R.layout.activity_exit_landscape);
         }
 
+        // Hiding the app bar
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
@@ -29,10 +32,11 @@ public class ExitActivity extends AppCompatActivity {
         ImageView  right = (ImageView)findViewById(R.id.rightBulb);
         TextView scoreText = (TextView) findViewById(R.id.scoreText);
 
+        // Fetching the score obtained during the round
         Intent intent = getIntent();
         int score = intent.getIntExtra("SCORE", 0);
 
-        // Set images according to how many correct answers were obtained
+        // Set images to lit bulbs according to how many correct answers were obtained
         scoreText.setText("You guessed " + score + "/10!");
         if(score > 0){
                 left.setImageResource(R.drawable.lit_bulb);
@@ -58,10 +62,10 @@ public class ExitActivity extends AppCompatActivity {
     }
 
     @Override
+    // Change layout when device's orientation changes
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
 
-        // Reload the appropriate layout when device orientation changes
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             setContentView(R.layout.activity_exit_landscape);
         } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){

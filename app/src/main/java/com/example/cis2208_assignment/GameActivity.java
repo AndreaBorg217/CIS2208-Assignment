@@ -96,17 +96,20 @@ public class GameActivity extends AppCompatActivity {
     View.OnClickListener checkAnswer = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+            // Buttons are disabled to not register further clicks during 2 sec pause
             disableButtons();
-            // if the pressed button contains the correct answer the score is incremented
+
+            // If the pressed button contains the correct answer the score is incremented
             Button b = (Button) view;
             if(b.getText() == questions.get(i).correctAnswer){
                 helper.setCorrectAnswered(questions.get(i).questionId);
                 score++;
             }
-            // the colours of the buttons are updated to mark which answers are correct and incorrect
+
+            // The colours of the buttons are updated to mark which answers are correct and incorrect
             switchButtonColours();
 
-            // after 2secs the next question/exit screen is shown to the user
+            // After 2secs the next question/exit screen is shown to the user
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run(){
@@ -114,11 +117,12 @@ public class GameActivity extends AppCompatActivity {
                     if (i < 10) {
                         QuestionRound(questions);
                     } else {
+                        // If the round's score is greater than the highscore, the local value is updated
                         if(score > helper.getHighScore()){
                             helper.updateHighScore(score);
                         }
                         Intent intent = new Intent(GameActivity.this, ExitActivity.class);
-                        intent.putExtra("SCORE", score);
+                        intent.putExtra("SCORE", score); // the score is passed to the Exit Screen
                         startActivity(intent);
                     }
                 }
@@ -160,10 +164,10 @@ public class GameActivity extends AppCompatActivity {
         b.setTextColor(res.getColor(R.color.white));
     }
     @Override
+    // Change the layout when the device's orientation changes
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
 
-        // Reload the appropriate layout when device orientation changes
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             setContentView(R.layout.activity_game_landscape);
         } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){

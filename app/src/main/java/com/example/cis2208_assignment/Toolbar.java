@@ -29,14 +29,15 @@ public class Toolbar extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_toolbar, container, false);
 
-        // Find the buttons in the layout
         back =  (ImageView) view.findViewById(R.id.back_button);
         profile = (ImageView) view.findViewById(R.id.profile_button);
         CardView card = (CardView) view.findViewById(R.id.profile_container);
         DbHelper helper = new DbHelper(view.getContext());
 
+        // Converting the profile picture from Base64 to an image
         String base = helper.getProfilePicture();
         if(base == null){
+            // If the profile picture isn't set, a default image is shown
             profile.setImageResource(R.drawable.profile);
             card.setCardBackgroundColor(Color.TRANSPARENT);
         }
@@ -48,7 +49,6 @@ public class Toolbar extends Fragment {
 
         }
 
-        // Set click listeners for the buttons
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

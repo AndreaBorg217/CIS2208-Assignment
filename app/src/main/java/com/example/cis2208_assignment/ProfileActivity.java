@@ -32,26 +32,32 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Picking layout which matches device orientation
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
             setContentView(R.layout.activity_profile_landscape);
         } else{
             setContentView(R.layout.activity_profile_portrait);
         }
 
-        ImageView profile_pic = (ImageView) findViewById(R.id.profile_pic);
-        TextView highScore = (TextView) findViewById(R.id.high_score);
-        CardView card = (CardView) findViewById(R.id.picture_container);
 
+
+        // Hiding the app bar
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
 
+        ImageView profile_pic = (ImageView) findViewById(R.id.profile_pic);
+        TextView highScore = (TextView) findViewById(R.id.high_score);
+        CardView card = (CardView) findViewById(R.id.picture_container);
         helper = new DbHelper(this);
 
-        System.out.println("HIGHSCORE: " + helper.getHighScore());
         highScore.setText("High Score: " + helper.getHighScore() + "/10");
+
+        // Converting the profile picture from Base64 to an image
         String base = helper.getProfilePicture();
         if(base == null){
+            // If the profile picture isn't set, a default image is shown
             profile_pic.setImageResource(R.drawable.profile);
             card.setCardBackgroundColor(Color.TRANSPARENT);
         }
@@ -64,6 +70,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void changeProfilePicture(View v){
+        // An advanced intent which allows the user to pick a profile picture from gallery
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.setType("image/*");
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
@@ -72,6 +79,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // A handler for the advanced intent
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.getData() != null) {
@@ -80,14 +88,15 @@ public class ProfileActivity extends AppCompatActivity {
             try {
                 InputStream inputStream = getContentResolver().openInputStream(uri);
                 Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                ImageView profile_pic = findViewById(R.id.profile_pic);
 
+                // Chosen image is converted to Bse64 and saved in the db
                 ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
                 byte[] byteArray = byteArrayOutputStream.toByteArray();
                 String encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
                 helper.updateProfilePicture(encoded);
 
+                // Activity is reloaded to reflect new profile picture
                 Intent intent = new Intent(this, ProfileActivity.class);
                 finish();
                 startActivity(intent);
@@ -109,6 +118,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     @Override
+    // Changing the layout when the device's orientation changes
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
 
