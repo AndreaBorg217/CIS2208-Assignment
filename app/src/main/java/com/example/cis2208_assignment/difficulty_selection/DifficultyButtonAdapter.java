@@ -52,6 +52,7 @@ public class DifficultyButtonAdapter extends RecyclerView.Adapter<DifficultyButt
             b.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    // When a difficulty button is pressed, its value is passed as an intent to the CategoryScreen
                     Intent intent = new Intent(v.getContext(), CategorySelection.class);
                     intent.putExtra("DIFFICULTY", b.getText().toString());
                     v.getContext().startActivity(intent);

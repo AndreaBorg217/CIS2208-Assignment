@@ -5,22 +5,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.os.Build;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.example.cis2208_assignment.Category;
 import com.example.cis2208_assignment.Question;
 
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.stream.Collectors;
 
 public class DbHelper extends SQLiteOpenHelper {
@@ -85,6 +76,7 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     public List<String> getDifficulties(){
+        // Gets a list of all difficulties in the db
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<String> difficulties = new ArrayList<String>();
         String[] projection = {"difficulty"};
@@ -99,6 +91,7 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     public List<Category> getAllCategories(){
+        // Gets a list of all categories in the db
         ArrayList<Category> categories = new ArrayList<Category>();
         SQLiteDatabase db = this.getReadableDatabase();
         String[] projection = {"categoryID", "categoryName", "icon"};
@@ -116,6 +109,7 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     public int getCategoryID(String category){
+        // Gets the categoryID of a categoryName in the db
         SQLiteDatabase db = this.getReadableDatabase();
         String[] projection = {"categoryID"};
         String selection = "categoryName = ?";
@@ -129,6 +123,7 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     public ArrayList<Question> getTenQuestions(String difficulty, int category){
+        // Gets a unique list of 10 questions having a particular difficulty & category
         ArrayList<Question> questions = new ArrayList<Question>();
         SQLiteDatabase db = this.getReadableDatabase();
         String[] projection = {"questionID", "question", "answer_1", "answer_2", "answer_3", "correctAnswer"};
@@ -155,6 +150,7 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     public void setCorrectAnswered(int questionId){
+        // Sets a question's correctlyAnswered field
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues dataToUpdate = new ContentValues();
         dataToUpdate.put("answeredCorrectly", 1);
@@ -164,6 +160,7 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     public void updateProfilePicture(String base){
+        // Inserts a Base64 string when a profile picture is chosen from gallery
         System.out.println(base.length());
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues dataToUpdate = new ContentValues();
@@ -174,6 +171,7 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     public String getProfilePicture(){
+        // Obtains the Base64 profile picture
         SQLiteDatabase db = this.getReadableDatabase();
         String[] projection = {"profile_pic"};
         Cursor cursor = db.query("user", projection, null, null, null, null, null);
@@ -186,6 +184,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
 
     public void updateHighScore(int score){
+        // Updates user's highscore
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues dataToUpdate = new ContentValues();
         dataToUpdate.put("high_score", score);
@@ -195,6 +194,7 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     public int getHighScore(){
+        // Fetches user's highscore
         SQLiteDatabase db = this.getReadableDatabase();
         String[] projection = {"high_score"};
         Cursor cursor = db.query("user", projection, null, null, null, null, null);
@@ -207,6 +207,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
 
     public List<Category> getAllCategoryScores(){
+        // Returns a list of objects to create the Category score cards
         ArrayList<Category> categories = new ArrayList<Category>();
         SQLiteDatabase db = this.getReadableDatabase();
         String[] projection = {"categoryID", "categoryName", "icon"};
@@ -225,6 +226,7 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     public String getCategoryScore(int id){
+        // Returns guessed/total for a category in the db
         SQLiteDatabase db = this.getReadableDatabase();
         String[] projection = {"questionID"};
         String selection = "answeredCorrectly = 1 AND categoryID = ?";
@@ -238,6 +240,7 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     public String getDifficultyScore(String difficulty){
+        // Returns guessed/total for a difficulty in the db
         SQLiteDatabase db = this.getReadableDatabase();
         String[] projection = {"questionID"};
         String selection = "answeredCorrectly = 1 AND difficulty = ?";

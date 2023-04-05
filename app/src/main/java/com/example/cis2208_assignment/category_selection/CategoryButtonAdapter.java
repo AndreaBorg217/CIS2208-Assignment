@@ -3,29 +3,20 @@ package com.example.cis2208_assignment.category_selection;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cis2208_assignment.Category;
-import com.example.cis2208_assignment.CategorySelection;
 import com.example.cis2208_assignment.GameActivity;
-import com.example.cis2208_assignment.MainActivity;
 import com.example.cis2208_assignment.R;
-import com.example.cis2208_assignment.difficulty_selection.DifficultyButtonAdapter;
 
 import java.util.List;
 
@@ -47,6 +38,8 @@ public class CategoryButtonAdapter extends RecyclerView.Adapter<CategoryButtonAd
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        // For every category in the db, we create a button with its name and icon
+
         Category c = categories.get(position);
         TextView name = holder.name;
         name.setText(c.categoryName);
@@ -78,9 +71,12 @@ public class CategoryButtonAdapter extends RecyclerView.Adapter<CategoryButtonAd
                 @Override
                 public void onClick(View v) {
                     Intent fetch = ((Activity) v.getContext()).getIntent();
+                    // We fetch the difficulty from the previous activity
                     String difficulty = fetch.getStringExtra("DIFFICULTY");
                     Intent intent = new Intent(v.getContext(), GameActivity.class);
                     String cat = name.getText().toString();
+                    // We pass the Game Screen the category chosen in this activity &
+                    // the difficulty chosen in the previous
                     intent.putExtra("CATEGORY", cat);
                     intent.putExtra("DIFFICULTY", difficulty);
                     v.getContext().startActivity(intent);
