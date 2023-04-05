@@ -9,16 +9,16 @@
 
     <TextView
         android:id="@+id/easy_score"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:textAlignment="center"
-        android:textSize="60dp"
+        android:fontFamily="@font/bubblegum_sans"
         android:lineHeight="80dp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:fontFamily="@font/bubblegum_sans"
-        android:textColor="@color/white"/>
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
