@@ -39,12 +39,13 @@ public class DbHelper extends SQLiteOpenHelper {
                 "\"correctAnswer\" TEXT NOT NULL, " +
                 "\"answeredCorrectly\" INTEGER NOT NULL DEFAULT 0, " +
                 "\"categoryID\" INTEGER, " +
+                "FOREIGN KEY(\"difficulty\") REFERENCES \"difficulties\"(\"difficulty\")," +
                 "FOREIGN KEY(\"categoryID\") REFERENCES \"categories\"(\"categoryID\"));"
         );
 
         db.execSQL("CREATE TABLE IF NOT EXISTS \"difficulties\" (" +
-                "\"difficultyLevel\" INTEGER, " +
-                "\"difficulty\" TEXT PRIMARY KEY);");
+                "\"difficultyLevel\" INTEGER PRIMARY KEY, " +
+                "\"difficulty\" TEXT NOT NULL);");
 
         db.execSQL("CREATE TABLE IF NOT EXISTS \"user\" (" +
                 "\"userID\" INTEGER,"+

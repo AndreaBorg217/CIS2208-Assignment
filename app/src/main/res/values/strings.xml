@@ -12,7 +12,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="change_your_profile">Change your Profile</string>
+    <string name="change_your_profile">Change your Profile Picture</string>
     <string name="category_scores">Category Scores</string>
     <string name="difficulty_scores">Difficulty Scores</string>
 </resources>

@@ -19,7 +19,7 @@ public class ExitActivity extends AppCompatActivity {
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
             setContentView(R.layout.activity_exit_landscape);
         } else{
-            setContentView(R.layout.activity_exit_landscape);
+            setContentView(R.layout.activity_exit_portrait);
         }
 
         // Hiding the app bar
