@@ -73,22 +73,22 @@ public class GameActivity extends AppCompatActivity {
         index.setText((i+1) + "/" + questions.size());
 
         Resources res = getResources();
-        int blue = res.getColor(R.color.blue);
+        int lilac = res.getColor(R.color.lilac, null);
 
         enableButtons();
-        option_1.setBackgroundTintList(ColorStateList.valueOf(blue));
+        option_1.setBackgroundTintList(ColorStateList.valueOf(lilac));
         option_1.setText(q.answers[0]);
         option_1.setOnClickListener(checkAnswer);
 
-        option_2.setBackgroundTintList(ColorStateList.valueOf(blue));
+        option_2.setBackgroundTintList(ColorStateList.valueOf(lilac));
         option_2.setText(q.answers[1]);
         option_2.setOnClickListener(checkAnswer);
 
-        option_3.setBackgroundTintList(ColorStateList.valueOf(blue));
+        option_3.setBackgroundTintList(ColorStateList.valueOf(lilac));
         option_3.setText(q.answers[2]);
         option_3.setOnClickListener(checkAnswer);
 
-        option_4.setBackgroundTintList(ColorStateList.valueOf(blue));
+        option_4.setBackgroundTintList(ColorStateList.valueOf(lilac));
         option_4.setText(q.answers[3]);
         option_4.setOnClickListener(checkAnswer);
     }
