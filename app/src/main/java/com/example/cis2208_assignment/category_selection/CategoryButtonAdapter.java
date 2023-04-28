@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cis2208_assignment.Category;
@@ -47,7 +48,7 @@ public class CategoryButtonAdapter extends RecyclerView.Adapter<CategoryButtonAd
 
         Context context = icon.getContext();
         int id = context.getResources().getIdentifier(c.categoryIcon, "drawable", context.getPackageName());
-        Drawable pic = context.getResources().getDrawable(id);
+        Drawable pic = ResourcesCompat.getDrawable(context.getResources(), id, null);
         icon.setImageDrawable(pic);
 
     }

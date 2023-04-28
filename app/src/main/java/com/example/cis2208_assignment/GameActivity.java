@@ -161,7 +161,7 @@ public class GameActivity extends AppCompatActivity {
         else{
             b.setBackgroundTintList(ColorStateList.valueOf(red));
         }
-        b.setTextColor(res.getColor(R.color.white));
+        b.setTextColor(res.getColor(R.color.white, null));
     }
     @Override
     // Change the layout when the device's orientation changes
